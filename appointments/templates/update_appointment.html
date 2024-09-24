@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-actions {
+            text-align: center;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .btn-secondary {
+            background-color: #f44336;
+        }
+        .btn-secondary:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Update Appointment</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.non_field_errors }}
+            {{ form.patient.errors }}
+            <label for="id_patient">Patient</label>
+            {{ form.patient }}
+        </div>
+
+        <div class="form-group">
+            {{ form.doctor.errors }}
+            <label for="id_doctor">Doctor</label>
+            {{ form.doctor }}
+        </div>
+
+        <div class="form-group">
+            {{ form.appointment_date.errors }}
+            <label for="id_appointment_date">Appointment Date</label>
+            {{ form.appointment_date }}
+        </div>
+
+        <div class="form-group">
+            {{ form.reason.errors }}
+            <label for="id_reason">Reason</label>
+            {{ form.reason }}
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn">Update Appointment</button>
+            <a href="{% url 'appointment_list' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

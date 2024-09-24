@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Appointment</title>
+</head>
+<body>
+    <h2>Are you sure you want to delete the appointment for {{ appointment.patient }} with Dr. {{ appointment.doctor }}?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+    </form>
+    <a href="{% url 'appointment_list' %}">Cancel</a>
+</body>
+</html>
